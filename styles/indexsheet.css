@@ -1,0 +1,25 @@
+.mysheet 
+{
+    list-style-type: square;
+}
+
+.hoverb:hover 
+{
+    background-color: #CBD1CC
+}
+
+.targets:target
+{
+    background-color: #CEEDCF
+}
+
+.focused:focus
+{
+    background-color: #CEEDCF
+}
+
+body
+{
+    padding-left: 20px;
+}
+
