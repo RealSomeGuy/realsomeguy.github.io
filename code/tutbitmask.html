@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>sgcode</title>
+        <link rel="stylesheet" href="../styles/indexsheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <section>
+	<nav>
+	    <ul>
+                <li><a href=".././index.html">home/</a></li>
+                <li><a href="./code.html">code/</a></li>
+		<div class="pad">
+                <ul>
+                    <li><a href="./projects.html">projects/</a></li>
+                    <li><a href="./tutorials.html">tutorials/</a></li>
+                </ul>
+		</div>
+                <li><a href="../fun/./fun.html">fun/</a></li>
+	    </ul>
+	</nav>
+	<article>
+	    <h1>BIT MANIPULATION</h1>
+	    <p>a tutorial on bit twiddling and such<p>
+	    <hr>
+
+	    <h4>introduction to bitwise operators</h4>
+	    <p>bitwise operators perform operations on bits</p>
+	    <p>C provides 6 bitwise operators for us to use</p>
+	    <p>such bitwise operators work on integral types only, not floating points, try to avoid using them with signed numbers as they may yield unwanted results</p>
+	    <p>(i.e since C99, left shift &lt;&lt; operator on signed numbers have undefined behaviour or right shift &gt;&gt; operators have implementation defined behavour on signed numbers)</p>
+
+	    <table style="width: 50%">
+		<tr>
+		    <th>BITWISE OPERATOR</th>
+		    <th>what it does</th>
+		</tr>
+		<tr>
+		    <td>~</td>
+		    <td>Bitwise NOT.flips all bits in n, i.e - turns 0 bit to 1, and vice versa, syntax: ~n where n is a number</td>
+		</tr>
+		<tr>
+		    <td>&amp;</td>
+		    <td>Bitwise AND. Ands each bit in n by each bit in z, syntax: n &amp; z</td>
+		</tr>
+		<tr>
+		    <td>|</td>
+		    <td>Bitwise OR. ORs each bit in n by each bit in z, syntax: n | z</td>
+		</tr>
+		<tr>
+		    <td>&lt;&lt;</td>
+		    <td>left shift operator, shifts all bits in n by z places to left, syntax: n &lt;&lt; z</td>
+		</tr>
+		<tr>
+		    <td>&gt;&gt;</td>
+		    <td>right shift operator, shifts all bits in n by z places to right, syntax: n &gt;&gt; z</td>
+		</tr>
+		<tr>
+		    <td>^</td>
+		    <td>bitwise XOR. XORs each bit in n by each bit in z, syntax: n ^ z</td>
+		</tr>
+	    </table>
+	    <p>article under construction</p>
+	</article>
+    </section>
+</html>
