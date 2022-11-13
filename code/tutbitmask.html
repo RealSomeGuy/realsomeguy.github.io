@@ -66,13 +66,14 @@
 	    <p>
 	    A bitwise NOT inverts the bits of a number(i.e it flips 0 to 1 and 1 to 0), 
 	    for example, take the number 2, which has a binary representation of 0000 0010 in 8 bits, a bitwise NOT would invert all of
-	    it to 1111 1101, which is -3 in two's complement, essentially it has the same effect as negating a number and then subtracting one from it, thus 2 becomes -2 -1 = -3.
+	    it to 1111 1101, which is -3 in two's complement, essentially it has the same effect as negating a number and then subtracting one from it, thus 2 becomes -2 -1 = -3. 
 	    </p>
 	    <p>------</p>
 	    <p>OPTIONAL READING FOR ADVANCED READERS:</p>
 	    <p>
-	    In an unsigned system, the MSB(most significant bit) does NOT represent the sign of a number so bitwise NOT-ing
-	    2 in an unsigned system becomes 253, since 1111 1101 in an unsigned system IS 253.
+	    In an unsigned system, the MSB(most significant bit) does NOT represent the sign of a number so trying bitwise NOT on
+	    2 in an unsigned system becomes 253(for 8 bits), since 1111 1101 in an unsigned system IS 253.
+	    (note: the result of bitwise not depends on the size of your data type for, we're considering everything as a char(1 byte/8 bits) here)
 	    </p>
 	    <p>------</p>
 
@@ -89,15 +90,14 @@ int main()
 	    </code>
 
 	    <p> output: -5 </p>
-	    <h4>TRY IT YOURSELF</h4>
+	    <p>try these:</p>
 	    <ol>
-		<li>predict the output of bitwise NOT'ing 8</li>
-		<li>take the binary representation of 4 and bitwise NOT it</li>
+		<li>predict value of ~9</li>
 	    </ol>
 	    <hr>
 	    <h4>bitwise AND</h4>
 	    <p>
-	    bitwise AND essentially checks if two bits are on(1) or not(0), it outputs 1 ONLY if two bits are 1, or else it outputs 0, for example, lets take 1(binary
+	    bitwise AND essentially checks if two bits are on(1) or not(0) for every bit, it outputs 1 ONLY if two bits are 1, or else it outputs 0, for example, lets take 1(binary
 	    representation: 0000 0001 in 8 bits) and lets take 2(binary representation: 0000 0010 in 8 bits), lets AND them together now: 1 &amp; 2, the result would be 0,
 	    why you may ask? to answer that, lets work it through.
 	    </p>
@@ -126,7 +126,7 @@ int main()
 		    <td>0</td>
 		</tr>
 		<tr>
-		    <td>AND'ing them</td>
+		    <td>AND</td>
 		    <td>0</td>
 		    <td>0</td>
 		    <td>0</td>
@@ -139,7 +139,7 @@ int main()
 	    </table>
 	    <p>See how no two bits were 1 at the same position/column? when two bits are not 1 at the same position, AND outputs a 0 for that position.</p>
 	    <p>
-	    Now try bitwise and'ing 3 and 10? what do you think the output will be? 3 &amp; 10 = 2. How? let's work through it!
+	    Now try bitwise AND on 3 and 10? what do you think the output will be? 3 &amp; 10 = 2. How? let's work through it!
 	    </p>
 	    <table>
 		<tr>
@@ -165,7 +165,7 @@ int main()
 		    <td>1</td>
 		</tr>
 		<tr>
-		    <td>AND'ing them</td>
+		    <td>AND</td>
 		    <td>0</td>
 		    <td>0</td>
 		    <td>0</td>
@@ -219,17 +219,254 @@ int main()
 #include &lt;stdio.h&gt;
 int main()
 {         
-    printf("%d\n", 4 &amp; 5);
+    printf("%u\n", 4 &amp; 5);
     return 0;          
 }
 </pre>
 	    </code>
 	    <p>OUTPUT: 4</p>
+	    <p>try these:</p>
 	    <ol>
 		<li>convert 5 and 3 to binary and then bitwise AND them together</li>
 		<li>predict the output of 5 &amp; 6</li>
 	    </ol>
-	    <p>article under construction</p>
+	    <hr>
+	    <h4>bitwise OR</h4>
+	    <p>
+	    Bitwise OR outputs 1 if any one of the bits in a given set of bits are 1, if both bits are 0, only then it would output zero. Try bitwise
+	    OR on 8 and 2, 8 | 2. The output would be 10. To better understand this, let's work this through.
+	    </p>
+	    <table>
+		<tr>
+		    <td>"8"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>"2"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>OR</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+	    </table>
+	    <p>see how only one of the bits needed to be 1 for OR to output 1?</p>
+	    <p>a truth table to explain it's behaviour</p>
+	    <h3>OR truth table </h3>
+	    <table>
+		<tr>
+		    <th>BIT X</th>
+		    <th>BIT Y</th>
+		    <th>OUTPUT</th>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+	    </table>
+	    <h4>code example</h4>
+	    <code>
+	    <pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf("%u\n", 2 | 3);
+    return 0;
+}
+	    </pre>
+	    </code>
+	    <p>output: 3<p>
+	    <p>try these: </p>
+	    <ol>
+		<li>10 | 3 = ??</li>
+		<li>20 | 4 = ??</li>
+	    </ol>
+	    <hr>
+	    <h3>LEFT SHIFT &lt;&lt;</h3>
+	    <p>
+	    shifts the bits of a number to the left by specified number of places, e.g - X &lt;&lt; 
+	    3 shifts every bit in X to the left by three places;
+	    X &lt;&lt; 1, shifts every bit in X by one place. Left shift has a side effect of doubling a number, 3 &lt;&lt; 1 would be 6, similarly
+	    3 &lt;&lt; 2 would double the number twice, so 3*2*2 = 12, hence 3 &lt;&lt; 2 = 12.
+	    </p>
+	    <p>let us try visualizing it</p>
+	    <img src="../images/lshift.PNG">
+	    <p>similarly, 3 &lt;&lt; 2 would shift it 2 places to the left instead of one place as shown in the image</p>
+	    <h4>code example</h4>
+	    <code>
+	    <pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf("%u\n", 4 &lt;&lt; 1);
+    return 0;
+}
+	    </pre>
+	    </code>
+	    <p>output: 8 </p>
+	    <p>try these:</p>
+	    <ol>
+		<li>4 &lt;&lt; 1 = ? (hint: shifting once has the effect of doubling once, shifing twice has the effect of doubling the number twice)
+		</li>
+		<li>2 &lt;&lt; 3 = ?</li>
+	    </ol>
+	    <hr>
+	    <h3>RIGHT SHIFT &gt;&gt;</h3>
+	    <p>
+	    Right shift is the polar opposite of left shift, instead of shifting to the left, it shifts to the right, it has the effect of halving 
+	    the number instead, watch out for discarded bits tho, since like left shift, it also has a similar problem:
+	    </p>
+	    <pre>
+	    1 &gt;&gt; 1, doing which would result in 0 since 0000 0001 -&gt; 0000 0000|1|&lt;---this bit is shifted below the lowest bit position
+	    hence it is discarded.
+	    </pre>
+	    <h4>code example</h4>
+	    <code>
+	    <pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf("%u\n", 8 &gt;&gt; 2);
+    return 0;
+}
+	    </pre>
+	    </code>
+	    <p>output: 2</p>
+	    <p>try these:</p>
+	    <ol>
+		<li>8 &gt;&gt; 1 = ? </li>
+		<li>4 &gt;&gt; 2 = ? </li>
+	    </ol>
+	    <hr>
+	    <h3>Bitwise XOR ^</h3>
+	    <p>
+	    short for exclusive OR, essentially it only outputs 1 only if one of the two bits are 1, if both are 1 or 0, it outputs 0, in simple terms
+	    both bits have to have different values for it to output 1.
+	    </p>
+	    <p> as an example lets try 2 ^ 3</p>
+	    <table>
+		<tr>
+		    <td>"2"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>"3"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>XOR</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		</tr>
+	    </table>
+	    <p>and thus, 2^3 = 1, notice how it outputted 1 for only the first bit, where two bits were different?</p>
+	    <h4>XOR truth table</h4>
+	    <table>
+		<tr>
+		    <th>BIT X</th>
+		    <th>BIT Y</th>
+		    <th>OUTPUT</th>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+	    </table>
+	    <h4>code example</h4>
+	    <code>
+	    <pre>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf("%u\n", 3 ^ 3);
+    return 0;
+}
+	    </pre>
+	    </code>
+	    <p>output: 0</p>
+	    <p>try these:</p>
+	    <ol>
+		<li>4^2= ??</li>
+		<li>7^2= ??</li>
+	    </ol>
 	</article>
     </section>
 </html>
