@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+code 
+{
+    font-family: monospace;
+    background-color: #CEEDCF;
+}
+
 .targets:target
 {
     background-color: #CEEDCF
@@ -21,6 +27,8 @@
 body
 {
     height: 100vh;
+    padding-right: 29px;
+    padding-left: 29px;
 }
 
 nav

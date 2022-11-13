@@ -61,6 +61,169 @@
 		    <td>bitwise XOR. XORs each bit in n by each bit in z, syntax: n ^ z</td>
 		</tr>
 	    </table>
+	    <hr>
+	    <h4>BITWISE NOT</h4>
+	    <p>
+	    A bitwise NOT inverts the bits of a number(i.e it flips 0 to 1 and 1 to 0), 
+	    for example, take the number 2, which has a binary representation of 0000 0010 in 8 bits, a bitwise NOT would invert all of
+	    it to 1111 1101, which is -3 in two's complement, essentially it has the same effect as negating a number and then subtracting one from it, thus 2 becomes -2 -1 = -3.
+	    </p>
+	    <p>------</p>
+	    <p>OPTIONAL READING FOR ADVANCED READERS:</p>
+	    <p>
+	    In an unsigned system, the MSB(most significant bit) does NOT represent the sign of a number so bitwise NOT-ing
+	    2 in an unsigned system becomes 253, since 1111 1101 in an unsigned system IS 253.
+	    </p>
+	    <p>------</p>
+
+	    <h5>code example</h5>
+	    <code>
+		<p>#include &lt;stdio.h&gt;</p>
+		<p>int main()</p>
+		<p>{         </p>
+		<p>    printf("%d\n", ~4);</p>
+		<p>    return 0;          </p>
+		<p>}                      </p>
+	    </code>
+
+	    <p> output: -5 </p>
+	    <h4>TRY IT YOURSELF</h4>
+	    <ol>
+		<li>predict the output of bitwise NOT'ing 8</li>
+		<li>take the binary representation of 4 and bitwise NOT it</li>
+	    </ol>
+	    <hr>
+	    <h4>bitwise AND</h4>
+	    <p>
+	    bitwise AND essentially checks if two bits are on(1) or not(0), it outputs 1 ONLY if two bits are 1, or else it outputs 0, for example, lets take 1(binary
+	    representation: 0000 0001 in 8 bits) and lets take 2(binary representatio: 0000 0010 in 8 bits), lets AND them together now: 1 &amp; 2, the result would be 0,
+	    why you may ask? to answer that, lets work it through.
+	    </p>
+
+	    <table>
+		<tr>
+		    <td>"1"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>"2"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>AND'ing them</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+	    </table>
+	    <p>See how no two bits were 1 at the same position/column? when two bits are not 1 at the same position, AND outputs a 0 for that position.</p>
+	    <p>
+	    Now try bitwise and'ing 3 and 10? what do you think the output will be? 3 &amp; 10 = 2. How? let's work through it!
+	    </p>
+	    <table>
+		<tr>
+		    <td>"10"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>"3"</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+		<tr>
+		    <td>AND'ing them</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+	    </table>
+	    <p>
+	    look at the second bit(the second last column) and see how both of them have a 1 bit at that position? Bitwise AND returns 1 if both bits at the same position are 
+	    1 and as expected we got 1 as an output at that position, so the overall output of out AND operation is 0000 0010, which converted to decimal(the number system we use)
+	    is 2, hence the output of 3 &amp; 10 is 2.
+	    </p>
+	    <p>
+	    Now we're going to show a truth table here, what it does is show how an AND gate (or in our case, bitwise AND operator) behaves with inputs, which in our case are bits.
+	    <h3>AND truth table </h3>
+	    <table>
+		<tr>
+		    <th>BIT X</th>
+		    <th>BIT Y</th>
+		    <th>OUTPUT</th>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>0</td>
+		    <td>1</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>0</td>
+		    <td>0</td>
+		</tr>
+		<tr>
+		    <td>1</td>
+		    <td>1</td>
+		    <td>1</td>
+		</tr>
+	    </table>
+	    <p>hopefully that clears up everything for you</p>
+	    <h5>code example</h5>
+	    <code>
+		<p>#include &lt;stdio.h&gt;</p>
+		<p>int main()</p>
+		<p>{         </p>
+		<p>    printf("%d\n", 4 &amp; 5);</p>
+		<p>    return 0;          </p>
+		<p>}                      </p>
+	    </code>
+	    <p>OUTPUT: 4</p>
+	    <ol>
+		<li>convert 5 and 3 to binary and then bitwise AND them together</li>
+		<li>predict the output of 5 &amp; 6</li>
+	    </ol>
 	    <p>article under construction</p>
 	</article>
     </section>
